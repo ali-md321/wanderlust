@@ -94,19 +94,20 @@ app.use((req,res,next) => {
     res.send(registerUser);
 })*/
 
+app.get("/",(req,res) => {
+    res.render("home");
+})
+
 app.use("/listings",listingRouter);
 app.use("/listings/:id/reviews",reviewRouter);
 app.use("/",userRouter);
-
 
 app.use((err, req, res, next) => {
     let { statusCode = 500, message = "Something went wrong" } = err;
     res.status(statusCode).render("error",{message});
 });
 
-app.all("*",(req,res,next) => {
-    next(new ExpressError(404,"Page not found!"));
-})
+
 
 app.listen(8080,() => {
     console.log("Server is listening at 8080!!..");
