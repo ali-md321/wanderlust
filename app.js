@@ -18,6 +18,7 @@ const flash = require("connect-flash");
 const passport = require("passport");
 const LocalStrategy = require("passport-local");
 const User = require("./models/user.js");
+const ExpressError = require("./utils/ExpressError.js");
 
 const mongoDbUrl ="mongodb://127.0.0.1:27017/wanderlust";
 const dbUrl = process.env.ATLASDB_URL;
@@ -103,6 +104,9 @@ app.use((err, req, res, next) => {
     res.status(statusCode).render("error",{message});
 });
 
+app.all("*",(req,res,next) => {
+    next(new ExpressError(404,"Page not found!"));
+})
 
 app.listen(8080,() => {
     console.log("Server is listening at 8080!!..");
