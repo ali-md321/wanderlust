@@ -1,0 +1,19 @@
+<div class="row">
+  <div class="col-8 offset-2">
+    <% if(success.length){ %>
+        <div class="alert alert-success alert-dismissible col-6 offset-3">
+           <center> <h5 class="alert-heading"><%= success  %></h5></center>
+           <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </div>
+      <% } %>
+    
+      <% if(error.length){ %>
+        <div class="alert alert-danger alert-dismissible">
+           <center> <h5 class="alert-heading"><%= error %></h5></center>
+           <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </div>
+      <% } %>
+    </div>
+</div>

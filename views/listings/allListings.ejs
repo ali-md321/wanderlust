@@ -1,0 +1,81 @@
+<% layout('/layouts/boilerplate') -%>
+
+<style>
+  .filters{
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .filter{
+    font-size: 16px;
+    text-align: center;
+    margin-right: 2rem;
+    opacity: 0.6;
+  }
+  .filter:hover{
+    opacity: 1;
+    font-size: 17px;
+  }
+</style>
+  <div class="mb-3 mt-3 filters">
+    <div class="filter">
+     <div> <i class="fa-solid fa-fire"></i></div>
+      <p>trending</p>
+    </div>
+    <div class="filter">
+      <div> <i class="fa-solid fa-bed"></i></div>
+       <p>Rooms</p>
+     </div>
+     <div class="filter">
+      <div> <i class="fa-solid fa-mountain-city"></i></div>
+       <p>iconic cities</p>
+     </div>
+     <div class="filter">
+      <div> <i class="fa-solid fa-mountain"></i></div>
+       <p>mountain</p>
+     </div>
+     <div class="filter">
+      <div> <i class="fa-solid fa-chess-rook"></i></div>
+       <p>castles</p>
+     </div>
+     <div class="filter">
+      <div> <i class="fa-solid fa-person-swimming"></i></div>
+       <p>amazing pools</p>
+     </div>
+     <div class="filter">
+      <div> <i class="fa-solid fa-campground"></i></div>
+       <p>camping</p>
+     </div>
+     <div class="filter">
+      <div> <i class="fa-solid fa-cow"></i></div>
+       <p>farms</p>
+     </div>
+     <div class="filter">
+      <div> <i class="fa-solid fa-snowflake"></i></div>
+       <p>Arctic</p>
+     </div>
+     <div class="filter">
+      <div> <i class="fa-solid fa-water"></i></div>
+       <p>waterfalls</p>
+     </div>
+     <div class="filter">
+      <div> <i class="fa-solid fa-igloo"></i></div>
+       <p>caves</p>
+     </div>
+  </div>
+
+    <div class="row row-cols-lg-3 ">
+        <%for(listing of listings){ %>
+            <a href="/listings/<%= listing._id %>" class="listing-link">
+             <div class="card listing-card" style="width: 20rem;">
+                <img class="card-img-top" src="<%= listing.image.url %>" style="height: 20rem;" alt="<%= listing.image.filename %>">
+                <div class="card-img-overlay"></div>
+                <div class="card-body">
+                  <p class="card-text">
+                    <b><%= listing.title %> </b><br>
+                    &#8377; <%= listing.price.toLocaleString("en-IN") %>
+                  </p>
+                </div>
+              </div>
+            </a>
+            <%} %>
+    </div>
